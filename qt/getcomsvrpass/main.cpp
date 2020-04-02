@@ -49,6 +49,7 @@ int main(int argc, char *argv[])
         return -1;
     } else {
         printf("Success...\nPassword:%S\nLength:%d\n", privateData->Buffer, (privateData->Length-1)/sizeof(WCHAR));
+        LsaFreeMemory(privateData);
     }
 
     if(h_policy) {
