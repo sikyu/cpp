@@ -7,10 +7,9 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    qInfo() << "Test123" << argc;
     if (argc > 1) {
         qInfo() << argv[0];
-        qInfo() << argv[1];
+        //qInfo() << argv[1];
         qInfo() << QCoreApplication::arguments().at(1);
     } else {
         qInfo() << "Please pass SCM:GUID";
@@ -49,7 +48,7 @@ int main(int argc, char *argv[])
         qDebug() << "LsaRetrievePrivateData failed : " << LsaNtStatusToWinError(result);
         return -1;
     } else {
-        printf("\nSuccess : password is %S (%d)\n", privateData->Buffer, privateData->Length);
+        printf("Success...\nPassword:%S\nLength:%d\n", privateData->Buffer, (privateData->Length-1)/sizeof(WCHAR));
     }
 
     if(h_policy) {
